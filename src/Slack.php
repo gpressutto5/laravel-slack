@@ -31,7 +31,7 @@ class Slack
 
     /**
      * Set the recipients of the message.
-     * All recipients are stored internally as ['#general', '@user', '@another_user']
+     * All recipients are stored internally as ['#general', '@user', '@another_user'].
      *
      * @param  object|array|string $recipient
      *

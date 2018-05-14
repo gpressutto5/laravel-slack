@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use Pressutto\LaravelSlack\Slack;
 use ReflectionObject;
+use Pressutto\LaravelSlack\Slack;
 
 class RecipientsTest extends TestCase
 {
@@ -79,7 +79,7 @@ class RecipientsTest extends TestCase
     private function getPrivatePropertyValueFromObject(string $propertyName, $object)
     {
         $reflection = new ReflectionObject($object);
-        $property   = $reflection->getProperty($propertyName);
+        $property = $reflection->getProperty($propertyName);
         $property->setAccessible(true);
 
         return $property->getValue($object);
