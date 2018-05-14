@@ -14,31 +14,21 @@
         "php": ">=7.0.0",
         "illuminate/support": "^5.5"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^7.1"
+    },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Pressutto\\LaravelSlack\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Pressutto\\LaravelSlack\\": "tests"
+            "Tests\\": "tests"
         }
     },
     "scripts": {
         "test": "vendor/bin/phpunit --colors=always"
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Pressutto\\LaravelSlack\\SlackServiceProvider"
-            ],
-            "aliases": {
-                "Slack": "Pressutto\\LaravelSlack\\Facade"
-            }
-        }
-    },
-    "minimum-stability": "stable",
-    "require-dev": {
-        "phpunit/phpunit": "^7.1"
-    }
+    "minimum-stability": "stable"
 }
