@@ -4,7 +4,7 @@ namespace Pressutto\LaravelSlack;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
-    const CONFIG_PATH = __DIR__ . '/../config/laravel-slack.php';
+    const CONFIG_PATH = __DIR__.'/../config/laravel-slack.php';
 
     /**
      * Indicates if loading of the provider is deferred.
