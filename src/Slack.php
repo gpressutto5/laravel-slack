@@ -12,6 +12,16 @@ class Slack
     private $recipients = [];
 
     /**
+     * @var string
+     */
+    private $slackWebhookUrl;
+
+    public function __construct(string $slackWebhookUrl)
+    {
+        $this->slackWebhookUrl = $slackWebhookUrl;
+    }
+
+    /**
      * Set the recipients of the message.
      *
      * @param  object|array|string $recipient

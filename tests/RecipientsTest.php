@@ -3,13 +3,12 @@
 namespace Tests;
 
 use ReflectionObject;
-use Pressutto\LaravelSlack\Slack;
 
 class RecipientsTest extends TestCase
 {
     public function testSettingSingleChannelStringRecipient()
     {
-        $slack = (new Slack())->to('#general');
+        $slack = \Slack::to('#general');
 
         $recipientsArray = $this->getPrivatePropertyValueFromObject('recipients', $slack);
 
@@ -18,7 +17,7 @@ class RecipientsTest extends TestCase
 
     public function testSettingSingleUserStringRecipient()
     {
-        $slack = (new Slack())->to('@user');
+        $slack = \Slack::to('@user');
 
         $recipientsArray = $this->getPrivatePropertyValueFromObject('recipients', $slack);
 
@@ -27,7 +26,7 @@ class RecipientsTest extends TestCase
 
     public function testSettingMultipleUsersStringRecipient()
     {
-        $slack = (new Slack())->to('@user1', '@user2', '@user3');
+        $slack = \Slack::to('@user1', '@user2', '@user3');
 
         $recipientsArray = $this->getPrivatePropertyValueFromObject('recipients', $slack);
 
@@ -36,7 +35,7 @@ class RecipientsTest extends TestCase
 
     public function testSettingSingleUserArrayRecipient()
     {
-        $slack = (new Slack())->to(['@user']);
+        $slack = \Slack::to(['@user']);
 
         $recipientsArray = $this->getPrivatePropertyValueFromObject('recipients', $slack);
 
@@ -45,7 +44,7 @@ class RecipientsTest extends TestCase
 
     public function testSettingMultipleUsersArrayRecipient()
     {
-        $slack = (new Slack())->to(['@user1', '@user2', '@user3']);
+        $slack = \Slack::to(['@user1', '@user2', '@user3']);
 
         $recipientsArray = $this->getPrivatePropertyValueFromObject('recipients', $slack);
 
@@ -54,7 +53,7 @@ class RecipientsTest extends TestCase
 
     public function testSettingSingleUserCollectionRecipient()
     {
-        $slack = (new Slack())->to(collect(['@user']));
+        $slack = \Slack::to(collect(['@user']));
 
         $recipientsArray = $this->getPrivatePropertyValueFromObject('recipients', $slack);
 
@@ -63,7 +62,7 @@ class RecipientsTest extends TestCase
 
     public function testSettingMultipleUsersCollectionRecipient()
     {
-        $slack = (new Slack())->to(collect(['@user1', '@user2', '@user3']));
+        $slack = \Slack::to(collect(['@user1', '@user2', '@user3']));
 
         $recipientsArray = $this->getPrivatePropertyValueFromObject('recipients', $slack);
 
