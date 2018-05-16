@@ -60,7 +60,7 @@ You can send simple Slack messages like this:
 - Send message to an user:
 
 ```php
-\Slack::to('@joe')->send('Hey Joe! It looks like you've forgotten your password! Use this token to recover it: as34bhdfh');
+\Slack::to('@joe')->send("Hey Joe! It looks like you've forgotten your password! Use this token to recover it: as34bhdfh");
 ```
 
 - Send message to multiple users:
@@ -73,8 +73,8 @@ You can send simple Slack messages like this:
 - Mix it up:
 
 ```php
-\Slack::to('@lisa', '@amy', '@mia')->send('I swear, honey, you are the only one... :heart:');
-//         ↑ where's that array? ↑
+\Slack::to('#universe', '@god', '#scientists')->send(':thinking_face:');
+//         ↑ what? I don't need that array? ↑
 ```
 
 - And more...
