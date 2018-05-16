@@ -7,7 +7,77 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/gpressutto5/laravel-slack.svg?style=for-the-badge)](https://packagist.org/packages/gpressutto5/laravel-slack)
 [![License](https://img.shields.io/packagist/l/gpressutto5/laravel-slack.svg?style=for-the-badge)](https://packagist.org/packages/gpressutto5/laravel-slack)
 
+Based on [illuminate/mail](https://github.com/illuminate/mail)
+
+## About
+
 Slack notification for Laravel as it should be.
 Since it uses On-Demand Notifications, it requires Laravel 5.5 or higher.
 
-Inspired by [illuminate/mail](https://github.com/illuminate/mail)
+## Installation 
+
+Require this package in your composer.json and update your dependencies:
+
+```bash
+composer require gpressutto5/laravel-slack
+```
+
+Since this package supports Laravel's Package Auto-Discovery
+you don't need to manually register the ServiceProvider.
+
+After that, publish the configuration file:
+
+```bash
+php artisan vendor:publish --provider="Pressutto\LaravelSlack\ServiceProvider"
+```
+
+You're gonna need to configure an ["Incoming Webhook"](https://api.slack.com/incoming-webhooks) integration for your Slack team.
+
+## Configuration
+
+You can change the Webhook URL on the published configuration file `config/laravel-slack.php`.
+For security reasons you shouldn't commit your Webhook URL,
+so this package will, by default, use the environment variable
+`SLACK_WEBHOOK_URL`. You can just add it to your `.env` file.
+Like this:
+
+```dotenv
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX
+```
+
+More configuration options coming!
+
+## Usage
+
+You can send simple Slack messages like this:
+
+- Send message to a channel:
+
+```php
+\Slack::to('#finance')->send('Hey, finance channel! A new order was created just now!');
+```
+
+- Send message to an user:
+
+```php
+\Slack::to('@joe')->send('Hey Joe! It looks like you've forgotten your password! Use this token to recover it: as34bhdfh');
+```
+
+- Send message to multiple users:
+
+```php
+\Slack::to(['@zoe', '@amy', '@mia'])->send('I swear, honey, you are the only one... :heart:');
+//         ↑  look at this array  ↑
+```
+
+- Mix it up:
+
+```php
+\Slack::to('@lisa', '@amy', '@mia')->send('I swear, honey, you are the only one... :heart:');
+//         ↑ where's that array? ↑
+```
+
+- And more...
+
+    This package is both under development and underdeveloped.
+    Many features will come. Stay tuned and, please, help us!
