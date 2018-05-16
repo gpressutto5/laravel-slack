@@ -47,9 +47,9 @@ class Slack
             $recipient = $recipient->toArray();
         }
 
-        $recipients = is_array($recipient) ? $recipient : func_get_args();
+        $this->recipients = is_array($recipient) ? $recipient : func_get_args();
 
-        return $this->setRecipient($recipients);
+        return $this;
     }
 
     /**
@@ -78,20 +78,5 @@ class Slack
                 )
             );
         }
-    }
-
-    /**
-     * Set the recipients of the message.
-     * All recipients are stored internally as ['#general', '@user', '@another_user'].
-     *
-     * @param  object|array|string $recipient
-     *
-     * @return $this
-     */
-    private function setRecipient($recipient)
-    {
-        $this->recipients = $recipient;
-
-        return $this;
     }
 }
