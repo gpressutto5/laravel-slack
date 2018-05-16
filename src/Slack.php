@@ -2,7 +2,10 @@
 
 namespace Pressutto\LaravelSlack;
 
+use Illuminate\Notifications\AnonymousNotifiable;
+use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Support\Collection;
+use Pressutto\LaravelSlack\Notifications\SimpleSlack;
 
 class Slack
 {
@@ -12,13 +15,23 @@ class Slack
     private $recipients = [];
 
     /**
+     * @var AnonymousNotifiable
+     */
+    private $anonymousNotifiable;
+
+    /**
      * @var string
      */
-    private $slackWebhookUrl;
+    private $from;
 
-    public function __construct(string $slackWebhookUrl)
+    /**
+     * @var string
+     */
+    private $image;
+
+    public function __construct(AnonymousNotifiable $anonymousNotifiable)
     {
-        $this->slackWebhookUrl = $slackWebhookUrl;
+        $this->anonymousNotifiable = $anonymousNotifiable;
     }
 
     /**
@@ -37,6 +50,34 @@ class Slack
         $recipients = is_array($recipient) ? $recipient : func_get_args();
 
         return $this->setRecipient($recipients);
+    }
+
+    /**
+     * Send a new message using a view.
+     *
+     * @param $message
+     *
+     * @return void
+     */
+    public function send(string $message)
+    {
+        $slackMessage = (new SlackMessage())->content($message);
+
+        if ($this->from) {
+            $slackMessage->from($this->from);
+        }
+
+        if ($this->image) {
+            $slackMessage->image($this->image);
+        }
+
+        foreach ($this->recipients as $recipient) {
+            $this->anonymousNotifiable->notify(
+                new SimpleSlack(
+                    $slackMessage->to($recipient)
+                )
+            );
+        }
     }
 
     /**
