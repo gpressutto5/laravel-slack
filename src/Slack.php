@@ -79,10 +79,6 @@ class Slack
             $slackMessage->image($this->image);
         }
 
-        if (empty($this->recipients)) {
-            $this->anonymousNotifiable->notify(new SimpleSlack($slackMessage));
-        }
-
         foreach ($this->recipients as $recipient) {
             $this->anonymousNotifiable->notify(
                 new SimpleSlack(
