@@ -1,15 +1,18 @@
-# Laravel Slack
-[![Build Status](https://img.shields.io/travis/gpressutto5/laravel-slack/master.svg?style=for-the-badge)](https://travis-ci.com/gpressutto5/laravel-slack)
-[![codecov](https://img.shields.io/codecov/c/github/gpressutto5/laravel-slack/master.svg?style=for-the-badge)](https://codecov.io/gh/gpressutto5/laravel-slack)
-[![Latest Stable Version](https://img.shields.io/packagist/v/gpressutto5/laravel-slack.svg?style=for-the-badge)](https://packagist.org/packages/gpressutto5/laravel-slack)
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/gpressutto5/laravel-slack.svg?style=for-the-badge)](https://packagist.org/packages/gpressutto5/laravel-slack)
-[![Laravel Version](https://img.shields.io/badge/laravel-%3E%3D5.5-orange.svg?style=for-the-badge)](https://packagist.org/packages/gpressutto5/laravel-slack)
-[![Total Downloads](https://img.shields.io/packagist/dt/gpressutto5/laravel-slack.svg?style=for-the-badge)](https://packagist.org/packages/gpressutto5/laravel-slack)
-[![License](https://img.shields.io/packagist/l/gpressutto5/laravel-slack.svg?style=for-the-badge)](https://packagist.org/packages/gpressutto5/laravel-slack)
+<p align="center"><img src="https://seeklogo.com/images/S/slack-logo-DE4445077C-seeklogo.com.png" height="60px"><img src="https://laravel.com/assets/img/components/logo-laravel.svg" height="60px"></p>
 
-Based on [illuminate/mail](https://github.com/illuminate/mail)
+<p align="center">
+<a href="https://travis-ci.com/gpressutto5/laravel-slack"><img src="https://img.shields.io/travis/gpressutto5/laravel-slack/master.svg?style=for-the-badge" alt="Build Status"></a>
+<a href="https://codecov.io/gh/gpressutto5/laravel-slack"><img src="https://img.shields.io/codecov/c/github/gpressutto5/laravel-slack/master.svg?style=for-the-badge" alt="codecov"></a>
+<a href="https://packagist.org/packages/gpressutto5/laravel-slack"><img src="https://img.shields.io/packagist/v/gpressutto5/laravel-slack.svg?style=for-the-badge" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/gpressutto5/laravel-slack"><img src="https://img.shields.io/packagist/php-v/gpressutto5/laravel-slack.svg?style=for-the-badge" alt="PHP from Packagist"></a>
+<a href="https://packagist.org/packages/gpressutto5/laravel-slack"><img src="https://img.shields.io/badge/laravel-%3E%3D5.5-orange.svg?style=for-the-badge" alt="Laravel Version"></a>
+<a href="https://packagist.org/packages/gpressutto5/laravel-slack"><img src="https://img.shields.io/packagist/dt/gpressutto5/laravel-slack.svg?style=for-the-badge" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/gpressutto5/laravel-slack"><img src="https://img.shields.io/packagist/l/gpressutto5/laravel-slack.svg?style=for-the-badge" alt="License"></a>
+<br>
+Based on <a href="https://github.com/illuminate/mail">illuminate/mail</a>
+</p>
 
-## About
+## About Laravel Slack
 
 Slack notification for Laravel as it should be.
 Since it uses On-Demand Notifications, it requires Laravel 5.5 or higher.
