@@ -3,6 +3,7 @@
 namespace Tests;
 
 use ReflectionObject;
+use Illuminate\Database\Eloquent\Model;
 
 class RecipientsTest extends TestCase
 {
@@ -69,6 +70,24 @@ class RecipientsTest extends TestCase
         $this->assertEquals(['@user1', '@user2', '@user3'], $recipientsArray);
     }
 
+    public function testSettingSingleUserObjectRecipient()
+    {
+        $slack = \Slack::to(new FakeUser());
+
+        $recipientsArray = $this->getPrivatePropertyValueFromObject('recipients', $slack);
+
+        $this->assertEquals(['@fake'], $recipientsArray);
+    }
+
+    public function testSettingMultipleUsersObjectRecipient()
+    {
+        $slack = \Slack::to(collect([new FakeUser(), new AnotherFakeUser()]));
+
+        $recipientsArray = $this->getPrivatePropertyValueFromObject('recipients', $slack);
+
+        $this->assertEquals(['@fake', '@another_fake'], $recipientsArray);
+    }
+
     /**
      * @param string $propertyName
      * @param object $object
@@ -82,5 +101,21 @@ class RecipientsTest extends TestCase
         $property->setAccessible(true);
 
         return $property->getValue($object);
+    }
+}
+
+class FakeUser extends Model
+{
+    public function getSlackChannelAttribute()
+    {
+        return '@fake';
+    }
+}
+
+class AnotherFakeUser extends Model
+{
+    public function getSlackChannelAttribute()
+    {
+        return '@another_fake';
     }
 }

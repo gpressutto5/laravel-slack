@@ -98,6 +98,25 @@ class HelloMessage extends SlackMessage
 \Slack::send(new SlackMessage());
 ```
 
+- Send to user:
+
+    You can use any object as a recipient as long as they have the
+    property `slack_channel`. If you are using Models you can just
+    create the column `slack_channel` and store the `@username` or
+    the `#channel` name there. If you already store it but on a
+    different column you can create a method `getSlackChannelAttribute`.
+
+```php
+class User extends Model
+{
+    public function getSlackChannelAttribute(): string
+    {
+        return $this->attributes['my_custom_slack_channel_column'];
+    }
+}
+\Slack::to(User::where('verified', true))->send('Sending message to all verified users!');
+```
+
 - And more...
 
     This package is both under development and underdeveloped.

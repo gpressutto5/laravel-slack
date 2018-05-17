@@ -47,10 +47,18 @@ class Slack
     public function to($recipient): self
     {
         if ($recipient instanceof Collection) {
-            $recipient = $recipient->toArray();
+            $recipient = $recipient->all();
         }
 
-        $this->recipients = is_array($recipient) ? $recipient : func_get_args();
+        $recipients = is_array($recipient) ? $recipient : func_get_args();
+
+        $this->recipients = array_map(function ($recipient) {
+            if (is_object($recipient)) {
+                return $recipient->slack_channel;
+            }
+
+            return $recipient;
+        }, $recipients);
 
         return $this;
     }
