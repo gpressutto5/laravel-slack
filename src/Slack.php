@@ -64,7 +64,7 @@ class Slack
     }
 
     /**
-     * Send a new message using a view.
+     * Send a new message.
      *
      * @param string|SlackMessage $message
      *
