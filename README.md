@@ -89,7 +89,7 @@ You can send simple Slack messages like this:
 ```php
 class HelloMessage extends SlackMessage
 {
-    public $content = "Hey bob, I'm a sending custom SlackMessage";
+    public $content = "Hey bob, I'm a sending a custom SlackMessage";
     public $channel = '@bob';
 }
 \Slack::send(new SlackMessage());
