@@ -33,6 +33,8 @@ class Slack
     {
         $this->anonymousNotifiable = \Notification::route('slack', $config['slack_webhook_url']);
         $this->recipients = [$config['default_channel']];
+        $this->from = $config['application_name'];
+        $this->image = $config['application_image'];
     }
 
     /**

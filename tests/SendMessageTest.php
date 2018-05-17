@@ -57,4 +57,56 @@ class SendMessageTest extends TestCase
         $this->assertEquals('#general', $slackMessageSent->channel);
         $this->assertEquals('Message', $slackMessageSent->content);
     }
+
+    public function testSendMessageWithTheDefaultSlackUsername()
+    {
+        $notification = Notification::fake();
+
+        $this->app['config']->set('laravel-slack.application_name', 'Slacker');
+
+        \Slack::send('Message');
+
+        $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
+        $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
+        $this->assertEquals('Slacker', $slackMessageSent->username);
+        $this->assertEquals('Message', $slackMessageSent->content);
+    }
+
+    public function testSendMessageWithTheDefaultConfigUsername()
+    {
+        $notification = Notification::fake();
+
+        \Slack::send('Message');
+
+        $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
+        $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
+        $this->assertEquals(null, $slackMessageSent->username);
+        $this->assertEquals('Message', $slackMessageSent->content);
+    }
+
+    public function testSendMessageWithTheDefaultSlackImage()
+    {
+        $notification = Notification::fake();
+
+        $this->app['config']->set('laravel-slack.application_image', 'https://laravel.com/favicon.png');
+
+        \Slack::send('Message');
+
+        $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
+        $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
+        $this->assertEquals('https://laravel.com/favicon.png', $slackMessageSent->image);
+        $this->assertEquals('Message', $slackMessageSent->content);
+    }
+
+    public function testSendMessageWithTheDefaultConfigImage()
+    {
+        $notification = Notification::fake();
+
+        \Slack::send('Message');
+
+        $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
+        $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
+        $this->assertEquals(null, $slackMessageSent->image);
+        $this->assertEquals('Message', $slackMessageSent->content);
+    }
 }

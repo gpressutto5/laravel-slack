@@ -27,4 +27,29 @@ return [
 
     'default_channel' => '#general',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application Name
+    |--------------------------------------------------------------------------
+    |
+    | The username that this integration will post as.
+    | Leave null to use Slack's default.
+    |
+    */
+
+    'application_name' => env('APP_NAME', null),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Name
+    |--------------------------------------------------------------------------
+    |
+    | The user image that is used for messages from this integration.
+    | Leave null to use Slack's default.
+    | It should be a valid URL.
+    |
+    */
+
+    'application_image' => null,
+
 ];
