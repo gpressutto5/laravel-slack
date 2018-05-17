@@ -35,7 +35,10 @@ You're gonna need to configure an ["Incoming Webhook"](https://api.slack.com/inc
 
 ## Configuration
 
-You can change the Webhook URL on the published configuration file `config/laravel-slack.php`.
+On the published configuration file `config/laravel-slack.php`
+you can change options like the Webhook URL, the default channel,
+the application name and the application image.
+
 For security reasons you shouldn't commit your Webhook URL,
 so this package will, by default, use the environment variable
 `SLACK_WEBHOOK_URL`. You can just add it to your `.env` file.
@@ -44,8 +47,6 @@ Like this:
 ```dotenv
 SLACK_WEBHOOK_URL=https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX
 ```
-
-More configuration options coming!
 
 ## Usage
 
