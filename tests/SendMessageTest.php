@@ -4,6 +4,7 @@ namespace Tests;
 
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Notifications\AnonymousNotifiable;
+use Illuminate\Notifications\Messages\SlackMessage;
 use Pressutto\LaravelSlack\Notifications\SimpleSlack;
 
 class SendMessageTest extends TestCase
@@ -108,5 +109,18 @@ class SendMessageTest extends TestCase
         $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
         $this->assertEquals(null, $slackMessageSent->image);
         $this->assertEquals('Message', $slackMessageSent->content);
+    }
+
+    public function testSendSlackMessage()
+    {
+        $notification = Notification::fake();
+        $message = (new SlackMessage())->to('#custom-channel')->content('Sending a SlackMessage');
+
+        \Slack::send($message);
+
+        $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
+        $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
+        $this->assertEquals('#custom-channel', $slackMessageSent->channel);
+        $this->assertEquals('Sending a SlackMessage', $slackMessageSent->content);
     }
 }

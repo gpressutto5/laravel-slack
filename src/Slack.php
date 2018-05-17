@@ -58,12 +58,17 @@ class Slack
     /**
      * Send a new message using a view.
      *
-     * @param $message
+     * @param string|SlackMessage $message
      *
      * @return void
      */
-    public function send(string $message)
+    public function send($message)
     {
+        if ($message instanceof SlackMessage) {
+            $this->anonymousNotifiable->notify(new SimpleSlack($message));
+            return;
+        }
+
         $slackMessage = (new SlackMessage())->content($message);
 
         if ($this->from) {

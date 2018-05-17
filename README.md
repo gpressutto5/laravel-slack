@@ -83,6 +83,17 @@ You can send simple Slack messages like this:
 \Slack::send('Default message to the default channel, set on config/laravel-slack.php.');
 ```
 
+- Send SlackMessage objects:
+
+```php
+class HelloMessage extends SlackMessage
+{
+    public $content = "Hey bob, I'm a sending custom SlackMessage";
+    public $channel = '@bob';
+}
+\Slack::send(new SlackMessage());
+```
+
 - And more...
 
     This package is both under development and underdeveloped.
