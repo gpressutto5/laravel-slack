@@ -15,4 +15,16 @@ return [
 
     'slack_webhook_url' => env('SLACK_WEBHOOK_URL', ''),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Default Channel
+    |--------------------------------------------------------------------------
+    |
+    | If no recipient is specified the message will delivered to this channel.
+    | You can set a default user by using '@' instead of '#'
+    |
+    */
+
+    'default_channel' => '#general',
+
 ];

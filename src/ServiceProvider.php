@@ -23,10 +23,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->mergeConfigFrom(self::CONFIG_PATH, 'laravel-slack');
 
         $this->app->singleton(Slack::class, function ($app) {
-            $slackWebhookUrl = $app['config']->get('laravel-slack.slack_webhook_url');
-            $anonymousNotifiable = \Notification::route('slack', $slackWebhookUrl);
-
-            return new Slack($anonymousNotifiable);
+            return new Slack($app['config']->get('laravel-slack'));
         });
 
         $this->app->alias(Slack::class, 'slack');

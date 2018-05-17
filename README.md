@@ -77,6 +77,12 @@ You can send simple Slack messages like this:
 //         ↑ what? I don't need that array? ↑
 ```
 
+- No recipient:
+
+```php
+\Slack::send('Default message to the default channel, set on config/laravel-slack.php.');
+```
+
 - And more...
 
     This package is both under development and underdeveloped.

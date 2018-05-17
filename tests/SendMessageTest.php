@@ -31,4 +31,30 @@ class SendMessageTest extends TestCase
         $this->assertEquals('@user', $slackMessageSent->channel);
         $this->assertEquals('USER', $slackMessageSent->content);
     }
+
+    public function testSendMessageToTheDefaultSlackChannel()
+    {
+        $notification = Notification::fake();
+
+        $this->app['config']->set('laravel-slack.default_channel', null);
+
+        \Slack::send('Message');
+
+        $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
+        $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
+        $this->assertEquals(null, $slackMessageSent->channel);
+        $this->assertEquals('Message', $slackMessageSent->content);
+    }
+
+    public function testSendMessageToTheDefaultConfigChannel()
+    {
+        $notification = Notification::fake();
+
+        \Slack::send('Message');
+
+        $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
+        $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
+        $this->assertEquals('#general', $slackMessageSent->channel);
+        $this->assertEquals('Message', $slackMessageSent->content);
+    }
 }

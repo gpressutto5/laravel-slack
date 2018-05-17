@@ -29,9 +29,9 @@ class Slack
      */
     private $image;
 
-    public function __construct(AnonymousNotifiable $anonymousNotifiable)
-    {
-        $this->anonymousNotifiable = $anonymousNotifiable;
+    public function __construct(array $config) {
+        $this->anonymousNotifiable = \Notification::route('slack', $config['slack_webhook_url']);
+        $this->recipients = [$config['default_channel']];
     }
 
     /**
@@ -41,7 +41,7 @@ class Slack
      *
      * @return $this
      */
-    public function to($recipient)
+    public function to($recipient): self
     {
         if ($recipient instanceof Collection) {
             $recipient = $recipient->toArray();
@@ -69,6 +69,10 @@ class Slack
 
         if ($this->image) {
             $slackMessage->image($this->image);
+        }
+
+        if (empty($this->recipients)) {
+            $this->anonymousNotifiable->notify(new SimpleSlack($slackMessage));
         }
 
         foreach ($this->recipients as $recipient) {
