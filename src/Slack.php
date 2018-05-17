@@ -66,6 +66,7 @@ class Slack
     {
         if ($message instanceof SlackMessage) {
             $this->anonymousNotifiable->notify(new SimpleSlack($message));
+
             return;
         }
 
