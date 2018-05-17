@@ -29,7 +29,8 @@ class Slack
      */
     private $image;
 
-    public function __construct(array $config) {
+    public function __construct(array $config)
+    {
         $this->anonymousNotifiable = \Notification::route('slack', $config['slack_webhook_url']);
         $this->recipients = [$config['default_channel']];
     }
