@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Pressutto\LaravelSlack\Facade;
+use Pressutto\LaravelSlack\Facades\Slack;
 use Pressutto\LaravelSlack\ServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
@@ -17,7 +17,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'Slack' => Facade::class,
+            'Slack' => Slack::class,
         ];
     }
 }

@@ -40,7 +40,7 @@
                 "Pressutto\\LaravelSlack\\ServiceProvider"
             ],
             "aliases": {
-                "Slack": "Pressutto\\LaravelSlack\\Facade"
+                "Slack": "Pressutto\\LaravelSlack\\Facades\\Slack"
             }
         }
     }
