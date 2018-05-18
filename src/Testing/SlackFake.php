@@ -9,14 +9,14 @@ use Illuminate\Notifications\Messages\SlackMessage;
 class SlackFake extends Slack
 {
     /**
-     * The sent messages
+     * The sent messages.
      *
      * @var SlackMessage[]
      */
     private $sent = [];
 
     /**
-     * Return the sent messages
+     * Return the sent messages.
      *
      * @return SlackMessage[]
      */
@@ -28,7 +28,7 @@ class SlackFake extends Slack
     /**
      * Assert that at least, or exactly(if $strict is true)
      * $count messages passed to $callable
-     * returns true
+     * returns true.
      *
      * @param callable $callback
      * @param int      $count
@@ -51,7 +51,7 @@ class SlackFake extends Slack
     }
 
     /**
-     * Asserts $count exactly messages were sent
+     * Asserts $count exactly messages were sent.
      *
      * @param int $count
      */
@@ -61,7 +61,6 @@ class SlackFake extends Slack
             return true;
         }, $count, true);
     }
-
 
     protected function notify(SlackMessage $slackMessage)
     {
