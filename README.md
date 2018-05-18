@@ -15,6 +15,7 @@ Based on <a href="https://github.com/illuminate/mail">illuminate/mail</a>
 ## About Laravel Slack
 
 Slack notification for Laravel as it should be.
+Easy, fast, simple and **highly testable**.
 Since it uses On-Demand Notifications, it requires Laravel 5.5 or higher.
 
 ## Installation 
@@ -121,3 +122,52 @@ class User extends Model
 
     This package is both under development and underdeveloped.
     Many features will come. Stay tuned and, please, help us!
+
+## Testing
+
+When testing you can easily mock the Slack service by calling
+`Slack::fake()` it will return a `SlackFake` object that won't
+send any message for real and will save them to an array.
+You can get this array by calling `Slack::sentMessages()`.
+
+This class also has some helper methods for you to use when
+testing:
+
+- Assert that at least one message with the content 'fake' was sent:
+
+```php
+Slack::assertSent(function (SlackMessage $message) {
+    return $message->content === 'fake';
+});
+```
+
+- Assert that at least two messages with the content
+being a string longer than 5 characters were sent:
+
+```php
+Slack::assertSent(function (SlackMessage $message) {
+    return strlen($message->content) >= 100;
+}, 2);
+```
+
+- Assert that exactly five messages where the content
+content contains the word 'test' were sent:
+
+```php
+Slack::assertSent(function (SlackMessage $message) {
+    return strpos($message->content, 'test') !== false;
+}, 5, true);
+```
+
+- Assert that exactly three messages were sent:
+
+```php
+Slack::assertSentCount(3);
+```
+
+- More test helper methods coming...
+
+Since this package uses `illuminate/notifications` to send notifications
+you can mock the Notification service instead of the Slack one
+and use the class `NotificationFake` in your tests.
+[Take a look](https://laravel.com/docs/5.6/mocking#notification-fake).
