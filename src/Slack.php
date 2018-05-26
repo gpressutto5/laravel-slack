@@ -117,7 +117,8 @@ class Slack
         }
 
         foreach ($this->recipients as $recipient) {
-            $slackMessageArray[] = $slackMessage->to($recipient);
+            $messageClone = clone $slackMessage;
+            $slackMessageArray[] = $messageClone->to($recipient);
         }
 
         return $slackMessageArray;

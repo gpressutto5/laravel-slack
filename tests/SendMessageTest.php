@@ -33,6 +33,22 @@ class SendMessageTest extends TestCase
         $this->assertEquals('USER', $slackMessageSent->content);
     }
 
+    public function testSendMessageToMultipleUsers()
+    {
+        $notification = Notification::fake();
+
+        \Slack::to('@user1', '@user2')->send('USER');
+
+        $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 2);
+        $sentNotifications = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class);
+        $slackMessageSent = $sentNotifications->first()->toSlack();
+        $this->assertEquals('@user1', $slackMessageSent->channel);
+        $this->assertEquals('USER', $slackMessageSent->content);
+        $slackMessageSent = $sentNotifications->last()->toSlack();
+        $this->assertEquals('@user2', $slackMessageSent->channel);
+        $this->assertEquals('USER', $slackMessageSent->content);
+    }
+
     public function testSendMessageToTheDefaultSlackChannel()
     {
         $notification = Notification::fake();
