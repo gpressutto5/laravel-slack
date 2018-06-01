@@ -41,7 +41,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Name
+    | Application Image
     |--------------------------------------------------------------------------
     |
     | The user image that is used for messages from this integration.
