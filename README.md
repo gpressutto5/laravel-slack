@@ -1,7 +1,7 @@
 <p align="center"><img src="https://seeklogo.com/images/S/slack-logo-DE4445077C-seeklogo.com.png" height="60px"><img src="https://laravel.com/assets/img/components/logo-laravel.svg" height="60px"></p>
 
 <p align="center">
-<a href="https://travis-ci.com/gpressutto5/laravel-slack"><img src="https://img.shields.io/travis/gpressutto5/laravel-slack/master.svg?style=for-the-badge" alt="Build Status"></a>
+<a href="https://travis-ci.com/gpressutto5/laravel-slack"><img src="https://img.shields.io/travis/com/gpressutto5/laravel-slack/master.svg?style=for-the-badge" alt="Build Status"></a>
 <a href="https://codecov.io/gh/gpressutto5/laravel-slack"><img src="https://img.shields.io/codecov/c/github/gpressutto5/laravel-slack/master.svg?style=for-the-badge" alt="codecov"></a>
 <a href="https://packagist.org/packages/gpressutto5/laravel-slack"><img src="https://img.shields.io/packagist/v/gpressutto5/laravel-slack.svg?style=for-the-badge" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/gpressutto5/laravel-slack"><img src="https://img.shields.io/packagist/php-v/gpressutto5/laravel-slack.svg?style=for-the-badge" alt="PHP from Packagist"></a>
