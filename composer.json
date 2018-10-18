@@ -14,7 +14,8 @@
         "php": ">=7.0.0",
         "guzzlehttp/guzzle": "^6.3",
         "illuminate/notifications": "^5.5",
-        "illuminate/support": "^5.5"
+        "illuminate/support": "^5.5",
+        "ramsey/uuid": "^3.8"
     },
     "require-dev": {
         "orchestra/testbench": "~3.5",
