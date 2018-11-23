@@ -3,6 +3,7 @@
 namespace Pressutto\LaravelSlack;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Pressutto\LaravelSlack\Notifications\SimpleSlack;
@@ -36,7 +37,7 @@ class Slack
 
     public function __construct(array $config)
     {
-        $this->anonymousNotifiable = \Notification::route('slack', $config['slack_webhook_url']);
+        $this->anonymousNotifiable = Notification::route('slack', $config['slack_webhook_url']);
         $this->recipients = [$config['default_channel']];
         $this->from = $config['application_name'];
         $this->image = $config['application_image'];
