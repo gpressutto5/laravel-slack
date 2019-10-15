@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Pressutto\LaravelSlack\Notifications\SimpleSlack;
+use Pressutto\LaravelSlack\Slack;
 
 class SendMessageTest extends TestCase
 {
@@ -14,6 +15,35 @@ class SendMessageTest extends TestCase
         $notification = Notification::fake();
 
         \Slack::to('#random')->send('RANDOM');
+
+        $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
+        $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
+        $this->assertEquals('#random', $slackMessageSent->channel);
+        $this->assertEquals('RANDOM', $slackMessageSent->content);
+    }
+
+    public function testSendMessageToAChannelWithSpecifiedWebHook()
+    {
+        $notification = Notification::fake();
+
+        \Slack::to('#random')->webhook('https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX')->send('RANDOM');
+
+        $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
+        $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
+        $this->assertEquals('#random', $slackMessageSent->channel);
+        $this->assertEquals('RANDOM', $slackMessageSent->content);
+    }
+
+    public function testSendMessageToAUserWithSpecifiedConfig()
+    {
+        $notification = Notification::fake();
+        $config = array(
+        'slack_webhook_url' => 'https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX'
+        );
+
+        $slack = new Slack($config);
+
+        $slack->to('#random')->send('RANDOM');
 
         $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
         $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
