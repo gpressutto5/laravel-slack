@@ -35,7 +35,8 @@ class Slack
      */
     private $config;
 
-	public function __construct( array $config = [] ) {
+	public function __construct( array $config = [] )
+	{
 		$config = $this->mergeConfig($config);
 		$this->anonymousNotifiable = Notification::route( 'slack', $config['slack_webhook_url'] );
 		$this->recipients          = [ $config['default_channel'] ];
@@ -50,7 +51,8 @@ class Slack
 	 *
 	 * @return mixed
 	 */
-	private function mergeConfig($config) {
+	private function mergeConfig(array $config) : array
+	{
 		$defaultConfig = config( 'laravel-slack' );
 
 		foreach ( $defaultConfig as $key => $value ) {
@@ -68,7 +70,8 @@ class Slack
 	 *
 	 * @return $this
 	 */
-	public function webhook(string $url) {
+	public function webhook(string $url) : self
+	{
 		$this->anonymousNotifiable = Notification::route( 'slack', $url );
 		return $this;
 	}
