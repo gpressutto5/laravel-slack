@@ -35,18 +35,17 @@ class Slack
      */
     private $config;
 
-    public function __construct( array $config = [] )
+    public function __construct(array $config = [])
     {
         $config = $this->mergeConfig($config);
         $this->anonymousNotifiable = Notification::route('slack', $config['slack_webhook_url']);
-        $this->recipients          = [ $config['default_channel'] ];
-        $this->from                = $config['application_name'];
-        $this->image               = $config['application_image'];
-        $this->config              = $config;
+        $this->recipients = [ $config['default_channel'] ];
+        $this->from = $config['application_name'];
+        $this->image = $config['application_image'];
+        $this->config = $config;
     }
 
     /**
-     * 
      * Use config variables specified by user
      * use default variables when not specified
      *
@@ -58,9 +57,9 @@ class Slack
     {
         $defaultConfig = config('laravel-slack');
 
-        foreach ( $defaultConfig as $key => $value ) {
-            if (! array_key_exists($key, $config) ) {
-                $config[ $key ] = $value;
+        foreach ($defaultConfig as $key => $value) {
+            if (! array_key_exists($key, $config)) {
+                $config[$key] = $value;
             }
         }
 
@@ -68,9 +67,8 @@ class Slack
     }
 
     /**
-     * 
      * Allows user specify webhook to use
-     * for current instance
+     * for current instance.
      *
      * @param string $url
      *

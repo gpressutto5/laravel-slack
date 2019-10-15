@@ -2,11 +2,11 @@
 
 namespace Tests;
 
+use Pressutto\LaravelSlack\Slack;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Pressutto\LaravelSlack\Notifications\SimpleSlack;
-use Pressutto\LaravelSlack\Slack;
 
 class SendMessageTest extends TestCase
 {
@@ -37,9 +37,9 @@ class SendMessageTest extends TestCase
     public function testSendMessageToAUserWithSpecifiedConfig()
     {
         $notification = Notification::fake();
-        $config = array(
-        'slack_webhook_url' => 'https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX'
-        );
+        $config = [
+        'slack_webhook_url' => 'https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX',
+        ];
 
         $slack = new Slack($config);
 
