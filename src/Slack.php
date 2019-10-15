@@ -39,7 +39,7 @@ class Slack
     {
         $config = $this->mergeConfig($config);
         $this->anonymousNotifiable = Notification::route('slack', $config['slack_webhook_url']);
-        $this->recipients = [ $config['default_channel'] ];
+        $this->recipients = [$config['default_channel']];
         $this->from = $config['application_name'];
         $this->image = $config['application_image'];
         $this->config = $config;
@@ -47,7 +47,7 @@ class Slack
 
     /**
      * Use config variables specified by user
-     * use default variables when not specified
+     * use default variables when not specified.
      *
      * @param $config
      *
@@ -77,6 +77,7 @@ class Slack
     public function webhook(string $url) : self
     {
         $this->anonymousNotifiable = Notification::route('slack', $url);
+
         return $this;
     }
 
