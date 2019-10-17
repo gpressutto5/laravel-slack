@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use Pressutto\LaravelSlack\Slack;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Messages\SlackMessage;
