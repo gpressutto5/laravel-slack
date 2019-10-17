@@ -37,17 +37,12 @@ class SendMessageTest extends TestCase
     public function testSendMessageToAUserWithSpecifiedConfig()
     {
         $notification = Notification::fake();
-        $config = [
-        'slack_webhook_url' => 'https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX',
-        ];
 
-        $slack = new Slack($config);
-
-        $slack->to('#random')->send('RANDOM');
+        \Pressutto\LaravelSlack\Facades\Slack::to('#fashion')->webhook('https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX')->send('RANDOM');
 
         $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
         $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
-        $this->assertEquals('#random', $slackMessageSent->channel);
+        $this->assertEquals('#fashion', $slackMessageSent->channel);
         $this->assertEquals('RANDOM', $slackMessageSent->content);
     }
 
