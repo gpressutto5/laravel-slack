@@ -13,12 +13,13 @@
     "require": {
         "php": ">=7.0.0",
         "guzzlehttp/guzzle": "^6.3",
-        "illuminate/notifications": "^5.5",
-        "illuminate/support": "^5.5"
+        "illuminate/notifications": "^5.8 || ^6.0 || ^7.0",
+        "illuminate/support": "^5.8 || ^6.0 || ^7.0",
+        "laravel/slack-notification-channel": "^2.0"
     },
     "require-dev": {
-        "orchestra/testbench": "~3.5",
-        "phpunit/phpunit": "^6.5"
+        "orchestra/testbench": "*",
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
