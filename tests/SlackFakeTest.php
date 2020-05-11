@@ -2,12 +2,12 @@
 
 namespace Tests;
 
-use Pressutto\LaravelSlack\Facades\Slack;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Notifications\AnonymousNotifiable;
-use PHPUnit\Framework\ExpectationFailedException;
-use PHPUnit\Framework\Constraint\ExceptionMessage;
 use Illuminate\Notifications\Messages\SlackMessage;
+use Illuminate\Support\Facades\Notification;
+use PHPUnit\Framework\Constraint\ExceptionMessage;
+use PHPUnit\Framework\ExpectationFailedException;
+use Pressutto\LaravelSlack\Facades\Slack;
 use Pressutto\LaravelSlack\Notifications\SimpleSlack;
 
 class SlackFakeTest extends TestCase

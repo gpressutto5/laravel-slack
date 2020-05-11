@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use ReflectionObject;
 use Illuminate\Database\Eloquent\Model;
+use ReflectionObject;
 
 class RecipientsTest extends TestCase
 {
