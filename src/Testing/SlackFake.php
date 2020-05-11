@@ -2,9 +2,9 @@
 
 namespace Pressutto\LaravelSlack\Testing;
 
-use Pressutto\LaravelSlack\Slack;
-use PHPUnit\Framework\Assert as PHPUnit;
 use Illuminate\Notifications\Messages\SlackMessage;
+use PHPUnit\Framework\Assert as PHPUnit;
+use Pressutto\LaravelSlack\Slack;
 
 class SlackFake extends Slack
 {
