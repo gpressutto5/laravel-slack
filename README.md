@@ -118,11 +118,6 @@ class User extends Model
 \Slack::to(User::where('verified', true))->send('Sending message to all verified users!');
 ```
 
-- And more...
-
-    This package is both under development and underdeveloped.
-    Many features will come. Stay tuned and, please, help us!
-
 ## Testing
 
 When testing you can easily mock the Slack service by calling
@@ -165,9 +160,7 @@ Slack::assertSent(function (SlackMessage $message) {
 Slack::assertSentCount(3);
 ```
 
-- More test helper methods coming...
-
 Since this package uses `illuminate/notifications` to send notifications
 you can mock the Notification service instead of the Slack one
 and use the class `NotificationFake` in your tests.
-[Take a look](https://laravel.com/docs/5.6/mocking#notification-fake).
+[Take a look](https://laravel.com/docs/8.x/mocking#notification-fake).
