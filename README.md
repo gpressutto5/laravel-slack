@@ -3,6 +3,7 @@
 <p align="center">
 <a href="https://travis-ci.com/gpressutto5/laravel-slack"><img src="https://img.shields.io/travis/com/gpressutto5/laravel-slack/master.svg?style=for-the-badge" alt="Build Status"></a>
 <a href="https://codecov.io/gh/gpressutto5/laravel-slack"><img src="https://img.shields.io/codecov/c/github/gpressutto5/laravel-slack/master.svg?style=for-the-badge" alt="codecov"></a>
+<a href="https://scrutinizer-ci.com/g/gpressutto5/laravel-slack/"><img alt="Scrutinizer code quality" src="https://img.shields.io/scrutinizer/quality/g/gpressutto5/laravel-slack.svg?style=for-the-badge"></a>
 <a href="https://packagist.org/packages/gpressutto5/laravel-slack"><img src="https://img.shields.io/packagist/v/gpressutto5/laravel-slack.svg?style=for-the-badge" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/gpressutto5/laravel-slack"><img src="https://img.shields.io/packagist/php-v/gpressutto5/laravel-slack.svg?style=for-the-badge" alt="PHP from Packagist"></a>
 <a href="https://packagist.org/packages/gpressutto5/laravel-slack"><img src="https://img.shields.io/badge/laravel-%3E%3D5.5-orange.svg?style=for-the-badge" alt="Laravel Version"></a>
