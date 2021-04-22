@@ -2,8 +2,8 @@
 
 namespace Pressutto\LaravelSlack\Notifications;
 
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
+use Illuminate\Notifications\Notification;
 
 class SimpleSlack extends Notification
 {

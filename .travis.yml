@@ -1,9 +1,10 @@
 language: php
 
 php:
-  - 7.0
   - 7.1
   - 7.2
+  - 7.3
+  - 7.4
 
 sudo: false
 
@@ -12,6 +13,7 @@ cache:
     - $HOME/.composer/cache
 
 before_script:
+  - export COMPOSER_MEMORY_LIMIT=-1
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
 

@@ -2,9 +2,9 @@
 
 namespace Tests;
 
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Messages\SlackMessage;
+use Illuminate\Support\Facades\Notification;
 use Pressutto\LaravelSlack\Notifications\SimpleSlack;
 
 class SendMessageTest extends TestCase
