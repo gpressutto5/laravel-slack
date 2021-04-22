@@ -52,7 +52,7 @@ class Slack
      *
      * @return $this
      */
-    public function webhook(string $url) : self
+    public function webhook(string $url): self
     {
         $this->anonymousNotifiable = Notification::route('slack', $url);
 
