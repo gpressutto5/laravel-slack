@@ -45,9 +45,24 @@ class Slack
     }
 
     /**
+     * Allows user specify webhook to use
+     * for current instance.
+     *
+     * @param string $url
+     *
+     * @return $this
+     */
+    public function webhook(string $url): self
+    {
+        $this->anonymousNotifiable = Notification::route('slack', $url);
+
+        return $this;
+    }
+
+    /**
      * Set the recipients of the message.
      *
-     * @param  object|array|string $recipient
+     * @param object|array|string $recipient
      *
      * @return $this
      */
@@ -59,13 +74,15 @@ class Slack
 
         $recipients = is_array($recipient) ? $recipient : func_get_args();
 
-        $this->recipients = array_map(function ($recipient) {
-            if (is_object($recipient)) {
-                return $recipient->slack_channel;
-            }
+        $this->recipients = array_map(
+            function ($recipient) {
+                if (is_object($recipient)) {
+                    return $recipient->slack_channel;
+                }
 
-            return $recipient;
-        }, $recipients);
+                return $recipient;
+            }, $recipients
+        );
 
         return $this;
     }

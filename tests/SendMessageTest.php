@@ -21,6 +21,30 @@ class SendMessageTest extends TestCase
         $this->assertEquals('RANDOM', $slackMessageSent->content);
     }
 
+    public function testSendMessageToAChannelWithSpecifiedWebHook()
+    {
+        $notification = Notification::fake();
+
+        \Slack::to('#random')->webhook('https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX')->send('RANDOM');
+
+        $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
+        $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
+        $this->assertEquals('#random', $slackMessageSent->channel);
+        $this->assertEquals('RANDOM', $slackMessageSent->content);
+    }
+
+    public function testSendMessageToAUserWithSpecifiedConfig()
+    {
+        $notification = Notification::fake();
+
+        \Pressutto\LaravelSlack\Facades\Slack::to('#fashion')->webhook('https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX')->send('RANDOM');
+
+        $notification->assertSentTo(new AnonymousNotifiable(), SimpleSlack::class, 1);
+        $slackMessageSent = $notification->sent(new AnonymousNotifiable(), SimpleSlack::class)->first()->toSlack();
+        $this->assertEquals('#fashion', $slackMessageSent->channel);
+        $this->assertEquals('RANDOM', $slackMessageSent->content);
+    }
+
     public function testSendMessageToAnUser()
     {
         $notification = Notification::fake();

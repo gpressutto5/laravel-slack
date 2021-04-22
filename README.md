@@ -118,6 +118,12 @@ class User extends Model
 \Slack::to(User::where('verified', true))->send('Sending message to all verified users!');
 ```
 
+- Send message by specifying webhook:
+
+```php
+\Slack::to('#finance')->webhook('https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX')->send('Hey, finance channel! A new order was created just now!');
+```
+
 ## Testing
 
 When testing you can easily mock the Slack service by calling
