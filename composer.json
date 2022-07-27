@@ -1,7 +1,10 @@
 {
     "name": "gpressutto5/laravel-slack",
     "description": "Slack notification for Laravel as it should be.",
-    "keywords": ["laravel", "slack"],
+    "keywords": [
+        "laravel",
+        "slack"
+    ],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -13,8 +16,8 @@
     "require": {
         "php": ">=7.1.3",
         "guzzlehttp/guzzle": "^6.3 || ^7.0",
-        "illuminate/notifications": "^5.8 || ^6.0 || ^7.0 || ^8.0",
-        "illuminate/support": "^5.8 || ^6.0 || ^7.0 || ^8.0",
+        "illuminate/notifications": "^5.8 || ^6.0 || ^7.0 || ^8.0|^9.0",
+        "illuminate/support": "^5.8 || ^6.0 || ^7.0 || ^8.0|^9.0",
         "laravel/slack-notification-channel": "^2.0"
     },
     "require-dev": {
