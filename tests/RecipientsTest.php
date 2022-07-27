@@ -89,9 +89,8 @@ class RecipientsTest extends TestCase
     }
 
     /**
-     * @param string $propertyName
-     * @param object $object
-     *
+     * @param  string  $propertyName
+     * @param  object  $object
      * @return mixed
      */
     private function getPrivatePropertyValueFromObject(string $propertyName, $object)

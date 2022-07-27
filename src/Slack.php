@@ -48,8 +48,7 @@ class Slack
      * Allows user specify webhook to use
      * for current instance.
      *
-     * @param string $url
-     *
+     * @param  string  $url
      * @return $this
      */
     public function webhook(string $url): self
@@ -62,8 +61,7 @@ class Slack
     /**
      * Set the recipients of the message.
      *
-     * @param object|array|string $recipient
-     *
+     * @param  object|array|string  $recipient
      * @return $this
      */
     public function to($recipient): self
@@ -90,8 +88,7 @@ class Slack
     /**
      * Send a new message.
      *
-     * @param string|SlackMessage $message
-     *
+     * @param  string|SlackMessage  $message
      * @return void
      */
     public function send($message)
@@ -113,8 +110,7 @@ class Slack
     /**
      * Send a new message.
      *
-     * @param string|SlackMessage $message
-     *
+     * @param  string|SlackMessage  $message
      * @return SlackMessage[]
      */
     protected function getSlackMessageArray($message): array

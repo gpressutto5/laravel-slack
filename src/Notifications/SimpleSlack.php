@@ -15,7 +15,7 @@ class SimpleSlack extends Notification
     /**
      * SimpleSlack constructor.
      *
-     * @param SlackMessage $message
+     * @param  SlackMessage  $message
      */
     public function __construct(SlackMessage $message)
     {
