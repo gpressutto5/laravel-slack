@@ -30,9 +30,9 @@ class SlackFake extends Slack
      * $count messages passed to $callable
      * returns true.
      *
-     * @param callable $callback
-     * @param int      $count
-     * @param bool     $strict
+     * @param  callable  $callback
+     * @param  int  $count
+     * @param  bool  $strict
      */
     public function assertSent(callable $callback, int $count = 1, bool $strict = false)
     {
@@ -53,7 +53,7 @@ class SlackFake extends Slack
     /**
      * Asserts $count exactly messages were sent.
      *
-     * @param int $count
+     * @param  int  $count
      */
     public function assertSentCount(int $count)
     {
