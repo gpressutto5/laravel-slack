@@ -6,6 +6,7 @@ use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Constraint\ExceptionMessage;
+use PHPUnit\Framework\Constraint\ExceptionMessageIsOrContains;
 use PHPUnit\Framework\ExpectationFailedException;
 use Pressutto\LaravelSlack\Facades\Slack;
 use Pressutto\LaravelSlack\Notifications\SimpleSlack;
@@ -30,7 +31,7 @@ class SlackFakeTest extends TestCase
             $fake->assertSentCount(1);
             $this->fail();
         } catch (ExpectationFailedException $e) {
-            $this->assertThat($e, new ExceptionMessage('The number of messages sent was 0 instead of 1'));
+            $this->assertExceptionMessage($e, 'The number of messages sent was 0 instead of 1');
         }
 
         \Slack::send('FAKE');
@@ -51,7 +52,7 @@ class SlackFakeTest extends TestCase
             });
             $this->fail();
         } catch (ExpectationFailedException $e) {
-            $this->assertThat($e, new ExceptionMessage('The number of messages sent was 0 instead of 1'));
+            $this->assertExceptionMessage($e, 'The number of messages sent was 0 instead of 1');
         }
 
         $fake->assertSent(function (SlackMessage $message) {
@@ -73,12 +74,20 @@ class SlackFakeTest extends TestCase
             });
             $this->fail();
         } catch (ExpectationFailedException $e) {
-            $this->assertThat($e,
-                new ExceptionMessage('The number of messages sent was 0 instead of 1'));
+            $this->assertExceptionMessage($e, 'The number of messages sent was 0 instead of 1');
         }
 
         $fake->assertSent(function (SlackMessage $message) use ($messageSent) {
             return $message === $messageSent;
         });
+    }
+
+    public function assertExceptionMessage(\Exception $e, string $message): void
+    {
+        if (class_exists(ExceptionMessage::class)) {
+            $this->assertThat($e, new ExceptionMessage($message));
+        } else {
+            $this->assertThat($e, new ExceptionMessageIsOrContains($message));
+        }
     }
 }
