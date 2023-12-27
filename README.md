@@ -19,6 +19,8 @@ Slack notification for Laravel as it should be.
 Easy, fast, simple and **highly testable**.
 Since it uses On-Demand Notifications, it requires Laravel 5.5 or higher.
 
+> **This library is archived** and no longer maintained. It works as expected, but I don't have time to maintain it anymore. As a last update, I've removed version constraints from the `composer.json` file, so you can use it with any future Laravel versions. Feel free to fork it and use it as you wish.
+
 ## Installation 
 
 Require this package in your composer.json and update your dependencies:
